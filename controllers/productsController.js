@@ -20,9 +20,9 @@ module.exports.create = async function (req, res) {
   try {
     let products = await Product.find({});
     let product = await Product.create({
-      id: 1,
-      name: "laptop",
-      quantity: 10,
+      id: products.length + 1,
+      name: req.body.name,
+      quantity: req.body.quantity,
     });
     products.push(product); //find all product and pushing a product
     return res.status(200).json({
